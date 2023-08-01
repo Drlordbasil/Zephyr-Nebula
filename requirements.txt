@@ -1,0 +1,6 @@
+The package requirements for this Python program are:
+- pandas
+- matplotlib
+- nltk
+- beautifulsoup4
+- requests
