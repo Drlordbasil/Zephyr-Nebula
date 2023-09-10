@@ -4,6 +4,7 @@ import nltk
 from bs4 import BeautifulSoup
 import requests
 
+
 class DataScraper:
     @staticmethod
     def scrape_data(url):
@@ -16,11 +17,13 @@ class DataScraper:
             print(f"An error occurred while scraping data: {e}")
             return []
 
+
 class DataPreprocessor:
     @staticmethod
     def preprocess_data(data):
         cleaned_data = [item.text.strip() for item in data]
         return cleaned_data
+
 
 class DataAnalyzer:
     @staticmethod
@@ -35,6 +38,7 @@ class DataAnalyzer:
         }
         return analysis_results
 
+
 class DataVisualizer:
     @staticmethod
     def create_visualizations(data):
@@ -46,11 +50,13 @@ class DataVisualizer:
         plt.title('Distribution of Data Length')
         plt.show()
 
+
 class NLPProcessor:
     @staticmethod
     def perform_nlp(data):
         tokenized_data = [nltk.word_tokenize(item) for item in data]
         return tokenized_data
+
 
 class DataUpdater:
     @staticmethod
@@ -61,6 +67,7 @@ class DataUpdater:
         except Exception as e:
             print(f"An error occurred while updating data: {e}")
             return []
+
 
 class DataExporter:
     @staticmethod
@@ -73,6 +80,7 @@ class DataExporter:
             df.to_json('data.json', orient='records')
         else:
             print("Invalid export format. Please choose either 'csv' or 'json'.")
+
 
 class UserInterface:
     @staticmethod
@@ -113,7 +121,8 @@ class UserInterface:
 
             elif choice == '3':
                 if not processed_data:
-                    print('No preprocessed data available. Please preprocess data first.')
+                    print(
+                        'No preprocessed data available. Please preprocess data first.')
                     continue
                 analysis_results = DataAnalyzer.analyze_data(processed_data)
                 print('Data analysis completed successfully!')
@@ -121,7 +130,8 @@ class UserInterface:
 
             elif choice == '4':
                 if not processed_data:
-                    print('No preprocessed data available. Please preprocess data first.')
+                    print(
+                        'No preprocessed data available. Please preprocess data first.')
                     continue
                 DataVisualizer.create_visualizations(processed_data)
 
@@ -144,7 +154,8 @@ class UserInterface:
 
             elif choice == '7':
                 if not processed_data:
-                    print('No preprocessed data available. Please preprocess data first.')
+                    print(
+                        'No preprocessed data available. Please preprocess data first.')
                     continue
                 export_format = input('Enter the export format (csv/json): ')
                 DataExporter.export_data(processed_data, export_format)
