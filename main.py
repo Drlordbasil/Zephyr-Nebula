@@ -1,14 +1,14 @@
-from requests import get, exceptions
-from nltk.tokenize import word_tokenize
-from matplotlib import pyplot as plt
-from pandas import DataFrame
-import requests
-from bs4 import BeautifulSoup
-import nltk
-import matplotlib.pyplot as plt
+from requests.exceptions import RequestException
+from requests import get
 import pandas as pd
-Here are some optimizations for the Python script:
-
+import matplotlib.pyplot as plt
+import nltk
+from bs4 import BeautifulSoup
+import requests
+from pandas import DataFrame
+from matplotlib import pyplot as plt
+from nltk.tokenize import word_tokenize
+from requests import get, exceptions
 1. Import only the necessary modules instead of importing the entire libraries:
 Replace:
 ```python
@@ -27,7 +27,12 @@ cleaned_data = [item.text.strip() for item in data]
 ```
 with:
 ```python
-cleaned_data = [item.text.strip() for item in data]
+
+
+def preprocess_data(data):
+    return [item.text.strip() for item in data]
+
+
 ```
 In the `NLPProcessor` class , replace:
 ```python
@@ -35,7 +40,12 @@ tokenized_data = [nltk.word_tokenize(item) for item in data]
 ```
 with:
 ```python
-tokenized_data = [word_tokenize(item) for item in data]
+
+
+def tokenize_data(data):
+    return [word_tokenize(item) for item in data]
+
+
 ```
 
 4. Use f-strings for string formatting:
@@ -55,7 +65,7 @@ except Exception as e:
 ```
 with:
 ```python
-except exceptions.RequestException as e:
+except RequestException as e:
 ```
 
 6. Remove unnecessary code repetition:
